@@ -41,7 +41,6 @@ export default new Vuex.Store({
       });
     },
     SET_POST(state, payload) {
-      // console.log(payload)
       state.post = payload;
       state.loading = false;
     },
@@ -50,7 +49,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
-    loadUsers({ commit }) {
+    loadUsers({
+      commit
+    }) {
       commit("IS_LOADING", true);
       axios.get(`${baseUrl}users`).then(
         res => {
@@ -62,7 +63,9 @@ export default new Vuex.Store({
         }
       );
     },
-    loadPosts({ commit }) {
+    loadPosts({
+      commit
+    }) {
       commit("IS_LOADING", true);
       axios.get(`${baseUrl}posts`).then(
         res => {
@@ -73,7 +76,9 @@ export default new Vuex.Store({
         }
       );
     },
-    loadSpecificPost({ commit }, postId) {
+    loadSpecificPost({
+      commit
+    }, postId) {
       commit("IS_LOADING", true);
       let post = [];
       axios
@@ -95,14 +100,16 @@ export default new Vuex.Store({
         );
     },
     //because user doesnt have a image from the photos api, we need to get the album of the user and then get image from the album, and then add to user store.
-    loadUsersImage({ commit }) {
+    loadUsersImage({
+      commit
+    }) {
       commit("IS_LOADING", true);
       let albums = [];
       axios.get(`${baseUrl}albums`).then(
         res => {
           albums = res.data.filter(
             (album, index, self) =>
-              index == self.findIndex(t => t.userId === album.userId)
+            index == self.findIndex(t => t.userId === album.userId)
           );
           commit("SET_ALBUM", albums);
         },
@@ -115,7 +122,7 @@ export default new Vuex.Store({
         res => {
           const photos = res.data.filter(
             (photo, index, self) =>
-              index == self.findIndex(t => t.albumId === photo.albumId)
+            index == self.findIndex(t => t.albumId === photo.albumId)
           );
           commit("SET_USER_IMAGE", photos);
         },

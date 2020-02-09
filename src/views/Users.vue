@@ -1,15 +1,16 @@
 <template>
   <div v-if="isLoading">Loading....</div>
   <div v-else class="users">
-    <h1 class="users__title">
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit
-    </h1>
+    <h1 class="users__title">Lorem ipsum dolor sit amet, consectetur adipiscing elit</h1>
+    <label class="users__search-label" for="search">Search</label>
     <input
+      id="search"
       class="users__search"
       type="text"
       placeholder="Search username"
       v-model="search"
     />
+
     <div class="users__all-users">
       <div class="users__card" v-for="user in filteredUsers" :key="user.id">
         <div class="users__img-container">
@@ -24,9 +25,11 @@
             v-for="post in userSpecificPosts(user.id)"
             :key="`posts-${post.id}`"
           >
-            <router-link class="users__post-link" :to="`/post/${post.id}`">{{
+            <router-link class="users__post-link" :to="`/post/${post.id}`">
+              {{
               post.title
-            }}</router-link>
+              }}
+            </router-link>
           </li>
         </ul>
       </div>

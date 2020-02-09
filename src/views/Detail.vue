@@ -38,7 +38,6 @@ export default {
       return this.$store.state.loading;
     },
     postsDetail() {
-      console.log(this.$store.state.post);
       return this.$store.state.post;
     }
   }

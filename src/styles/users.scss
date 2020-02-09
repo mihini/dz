@@ -8,12 +8,24 @@
 
     @include breakpoint(tablet) {
       margin-left: 10px;
+      margin-bottom: 40px;
     }
 
     @include breakpoint(tablet-horizontal) {
       font-size: 28px;
     }
 
+  }
+
+  &__search-label {
+    margin-bottom: 4px;
+    display: block;
+    font-weight: 600;
+
+    @include breakpoint(tablet) {
+      margin: auto;
+      width: 50%;
+    }
   }
 
   &__search {
@@ -29,8 +41,8 @@
 
 
     @include breakpoint(tablet) {
-      margin-left: 10px;
-      width: 400px;
+      // margin-left: 10px;
+      width: 50%;
     }
 
     @include breakpoint(tablet-horizontal) {}
